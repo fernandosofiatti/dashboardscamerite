@@ -1,0 +1,6 @@
+# Python
+__pycache__/
+*.pyc
+
+# Exports reais (contêm dados de clientes — nunca subir)
+*.csv
