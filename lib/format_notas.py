@@ -13,8 +13,8 @@ from lib.common import (
     format_currency,
     format_percent,
     mom_delta,
-    pie_by_category,
     render_chart,
+    section_title,
     sidebar_date_range,
     sidebar_multiselect,
     to_date,
@@ -122,15 +122,21 @@ def render(df: pd.DataFrame):
     c7.metric("Pendente sem CS", format_percent(pct_sem_cs))
     c8.metric("Notas no Período", f"{len(df)}")
 
-    cols = st.columns(2)
-    with cols[0]:
-        render_chart(pie_by_category(df, "Tipo", "Valor", "Distribuição por Tipo"), "tipo")
-    with cols[1]:
-        render_chart(pie_by_category(df, "Método", "Valor", "Distribuição por Método de Pagamento"), "metodo")
-
     fig_month = bar_month_recebido_pendente(df, "Autorização", "Recebido vs A Receber por Mês (Autorização)")
     if fig_month:
         render_chart(fig_month, "mes")
+
+    section_title("Evolução Carteira por CS")
+    cs_opcoes = sorted(df["CS"].unique())
+    sel_col, _ = st.columns([1, 2])
+    cs_escolhido = sel_col.selectbox("Escolha o CS", cs_opcoes, key="cs_evolucao_notas")
+    fig_cs = bar_month_recebido_pendente(
+        df[df["CS"] == cs_escolhido], "Autorização", f"Recebido vs A Receber por Mês — {cs_escolhido}"
+    )
+    if fig_cs:
+        render_chart(fig_cs, "mes_cs")
+    else:
+        st.info("Sem notas com data de autorização para esse CS nos filtros atuais.")
 
     render_chart(
         bar_by_category_horizontal(pendente, "Cliente", "Valor", "Top 20 Clientes por Valor Pendente", top_n=20),

@@ -17,7 +17,6 @@ from lib.common import (
     bar_month_recebido_pendente,
     compute_kpis,
     detail_section,
-    pie_by_category,
     render_chart,
     section_title,
     sidebar_date_range,
@@ -80,17 +79,27 @@ def render(df: pd.DataFrame):
 
     cols = st.columns(2)
     with cols[0]:
-        render_chart(aging_chart(kpis["pendente_like"], kpis["hoje"], "Aging de Recebíveis em Aberto"), "aging")
+        render_chart(
+            aging_chart(kpis["pendente_like"], kpis["hoje"], "Aging de Recebíveis em Aberto", height=460), "aging"
+        )
     with cols[1]:
-        render_chart(pie_by_category(df, "Tipo", "Valor", "Distribuição por Tipo"), "tipo")
-
-    cols = st.columns(2)
-    with cols[0]:
-        render_chart(pie_by_category(df, "Forma", "Valor", "Distribuição por Forma de Pagamento"), "forma")
-    with cols[1]:
-        fig_month = bar_month_recebido_pendente(df, "Vencimento", "Recebido vs A Receber por Mês (Vencimento)")
+        fig_month = bar_month_recebido_pendente(
+            df, "Vencimento", "Recebido vs A Receber por Mês (Vencimento)", height=460
+        )
         if fig_month:
             render_chart(fig_month, "mes")
+
+    section_title("Evolução Mensal por CS")
+    cs_opcoes = sorted(df["CS"].unique())
+    sel_col, _ = st.columns([1, 2])
+    cs_escolhido = sel_col.selectbox("Escolha o CS", cs_opcoes, key="cs_evolucao")
+    fig_cs = bar_month_recebido_pendente(
+        df[df["CS"] == cs_escolhido], "Vencimento", f"Recebido vs A Receber por Mês — {cs_escolhido}"
+    )
+    if fig_cs:
+        render_chart(fig_cs, "mes_cs")
+    else:
+        st.info("Sem cobranças com vencimento para esse CS nos filtros atuais.")
 
     render_chart(
         top_clients_aging_chart(

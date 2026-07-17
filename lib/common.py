@@ -407,7 +407,7 @@ def compute_kpis(df: pd.DataFrame) -> dict:
     }
 
 
-def aging_chart(pendente_like: pd.DataFrame, hoje, title: str, color_col: str | None = None):
+def aging_chart(pendente_like: pd.DataFrame, hoje, title: str, color_col: str | None = None, height: int = CHART_HEIGHT):
     aging = pendente_like.copy()
     aging["Faixa"] = aging["Vencimento"].apply(lambda v: aging_bucket(v, hoje))
     group_cols = ["Faixa"] + ([color_col] if color_col else [])
@@ -431,7 +431,7 @@ def aging_chart(pendente_like: pd.DataFrame, hoje, title: str, color_col: str | 
         fig = px.bar(agg, x="Faixa", y="Valor", title=title, **color_kwargs)
 
     fig.update_yaxes(tickprefix="R$ ")
-    return style_fig(fig)
+    return style_fig(fig, height=height)
 
 
 def top_clients_aging_chart(pendente_like: pd.DataFrame, hoje, category_col: str, title: str, top_n: int = 10):
@@ -468,7 +468,7 @@ def top_clients_aging_chart(pendente_like: pd.DataFrame, hoje, category_col: str
     return style_fig(fig, height=max(CHART_HEIGHT, 32 * len(totals) + 60))
 
 
-def bar_month_recebido_pendente(df: pd.DataFrame, date_col: str, title: str):
+def bar_month_recebido_pendente(df: pd.DataFrame, date_col: str, title: str, height: int = CHART_HEIGHT):
     """Grouped bars per month: what was received vs what is still open (only issued charges)."""
     tmp = df[df["Status"].isin(["Pago", "Pendente"])].dropna(subset=[date_col]).copy()
     if tmp.empty:
@@ -490,7 +490,7 @@ def bar_month_recebido_pendente(df: pd.DataFrame, date_col: str, title: str):
     )
     fig.update_xaxes(type="category", categoryorder="array", categoryarray=ordem, title=None)
     fig.update_yaxes(tickprefix="R$ ", title=None)
-    return style_fig(fig)
+    return style_fig(fig, height=height)
 
 
 def detail_section(df: pd.DataFrame, key: str, views: dict | None = None):
