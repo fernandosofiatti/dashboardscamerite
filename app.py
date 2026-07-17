@@ -3,13 +3,13 @@ import streamlit as st
 from lib import format_cobrancas, format_combined, format_notas
 from lib.common import inject_css, page_header, read_csv_any
 
-st.set_page_config(page_title="Dashboard Ca", page_icon="💰", layout="wide")
+st.set_page_config(page_title="Dashboards CS", page_icon="💰", layout="wide")
 inject_css()
 
 FORMATS = [format_cobrancas, format_notas]
 
 page_header(
-    "💰 Dashboard de Cobranças",
+    "💰 Dashboard Camerite - Time CS",
     "Importe os exports de cobranças e notas para acompanhar recebíveis, inadimplência e a carteira por CS.",
 )
 

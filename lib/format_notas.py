@@ -123,12 +123,12 @@ def render(df: pd.DataFrame):
     c7.metric("Pendente sem CS", format_percent(pct_sem_cs))
     c8.metric("Notas no Período", f"{len(df)}")
 
-    fig_month = bar_month_recebido_pendente(df, "Autorização", "Recebido vs A Receber por Mês (Autorização)")
+    fig_month = bar_month_recebido_pendente(df, "Autorização", "Recebido vs A Receber por Mês")
     if fig_month:
         render_chart(fig_month, "mes")
 
     section_title("Evolução Carteira por CS")
-    fig_cs = line_month_by_category(df, "Autorização", "CS", "Valor Emitido por Mês, por CS (Autorização)", height=420)
+    fig_cs = line_month_by_category(df, "Autorização", "CS", "Valor Emitido por Mês, por CS", height=420)
     if fig_cs:
         render_chart(fig_cs, "mes_cs")
     else:

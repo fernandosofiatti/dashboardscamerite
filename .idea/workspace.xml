@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b33df906-a03a-4add-b08d-cc6020d48f08" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/format_combined.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/format_combined.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/format_notas.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/format_notas.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="12" />
+    <option name="cachedIndexableFilesCount" value="19" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,10 +24,69 @@
     <commands />
     <urls />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2,
-  "fromUser": false
-}]]></component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0000009405448003" />
+      <entry key="MS500" value="1.0623269532120336" />
+      <entry key="S2" value="1.5021283728150603" />
+      <entry key="S5" value="1.9292409566472668" />
+      <entry key="S10" value="2.585111970347894" />
+      <entry key="S30" value="3.812863293963385" />
+      <entry key="S60" value="4.33784148200166" />
+      <entry key="M2" value="4.649650072829612" />
+      <entry key="M5" value="4.854932691658529" />
+      <entry key="M10" value="4.926618527989259" />
+      <entry key="M15" value="4.950888592589086" />
+      <entry key="M30" value="4.975348572607519" />
+      <entry key="H1" value="4.9876502591499845" />
+      <entry key="H2" value="4.993819110714935" />
+      <entry key="H4" value="4.99690804913083" />
+      <entry key="D1" value="4.999484465528569" />
+      <entry key="W1" value="4.999926347090327" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="6.462419846268363E-5" />
+      <entry key="MS500" value="0.18568674666265325" />
+      <entry key="S2" value="1.0681466432212452" />
+      <entry key="S5" value="1.7138851265107364" />
+      <entry key="S10" value="2.4562529584867248" />
+      <entry key="S30" value="3.7572973455996888" />
+      <entry key="S60" value="4.307334511864538" />
+      <entry key="M2" value="4.633582139472292" />
+      <entry key="M5" value="4.848290150560738" />
+      <entry key="M10" value="4.923259571876415" />
+      <entry key="M15" value="4.948640776260149" />
+      <entry key="M30" value="4.974220373397532" />
+      <entry key="H1" value="4.9870850801891455" />
+      <entry key="H2" value="4.99353625056709" />
+      <entry key="H4" value="4.996766551286234" />
+      <entry key="D1" value="4.999460873133051" />
+      <entry key="W1" value="4.999922976517266" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3GdexzsmCU5x60VOY8luOaAbLIc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,6 +97,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
@@ -70,6 +129,7 @@
       <option name="presentableId" value="Default" />
       <updated>1784306123742</updated>
       <workItem from="1784306125239" duration="780000" />
+      <workItem from="1784311598884" duration="81000" />
     </task>
     <servers />
   </component>
