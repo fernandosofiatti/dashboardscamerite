@@ -493,6 +493,33 @@ def bar_month_recebido_pendente(df: pd.DataFrame, date_col: str, title: str, hei
     return style_fig(fig, height=height)
 
 
+def line_month_by_category(df: pd.DataFrame, date_col: str, category_col: str, title: str, height: int = CHART_HEIGHT):
+    """One line per category showing the monthly issued total (Pago + Pendente).
+    Months with no rows for a category count as zero, so lines don't jump over gaps."""
+    tmp = df[df["Status"].isin(["Pago", "Pendente"])].dropna(subset=[date_col]).copy()
+    if tmp.empty:
+        return None
+    tmp["_p"] = tmp[date_col].dt.to_period("M")
+    pivot = tmp.pivot_table(index="_p", columns=category_col, values="Valor", aggfunc="sum").fillna(0).sort_index()
+    long = pivot.reset_index().melt(id_vars="_p", var_name=category_col, value_name="Valor")
+    long["Mês"] = long["_p"].dt.strftime("%m/%Y")
+    ordem = pivot.index.strftime("%m/%Y").tolist()
+
+    fig = px.line(
+        long,
+        x="Mês",
+        y="Valor",
+        color=category_col,
+        markers=True,
+        title=title,
+        color_discrete_map=category_color_map(long[category_col].unique()),
+    )
+    fig.update_traces(line=dict(width=2.5), marker=dict(size=7))
+    fig.update_xaxes(type="category", categoryorder="array", categoryarray=ordem)
+    fig.update_yaxes(tickprefix="R$ ", rangemode="tozero")
+    return style_fig(fig, height=height)
+
+
 def detail_section(df: pd.DataFrame, key: str, views: dict | None = None):
     """Expander with the filtered rows behind the charts + CSV download (Excel-friendly)."""
     all_views = {"Todas as linhas": df}

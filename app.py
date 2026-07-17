@@ -3,7 +3,7 @@ import streamlit as st
 from lib import format_cobrancas, format_combined, format_notas
 from lib.common import inject_css, page_header, read_csv_any
 
-st.set_page_config(page_title="Dashboard de Cobranças", page_icon="💰", layout="wide")
+st.set_page_config(page_title="Dashboard Ca", page_icon="💰", layout="wide")
 inject_css()
 
 FORMATS = [format_cobrancas, format_notas]

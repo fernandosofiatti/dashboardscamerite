@@ -12,6 +12,7 @@ from lib.common import (
     detail_section,
     format_currency,
     format_percent,
+    line_month_by_category,
     mom_delta,
     render_chart,
     section_title,
@@ -127,16 +128,11 @@ def render(df: pd.DataFrame):
         render_chart(fig_month, "mes")
 
     section_title("Evolução Carteira por CS")
-    cs_opcoes = sorted(df["CS"].unique())
-    sel_col, _ = st.columns([1, 2])
-    cs_escolhido = sel_col.selectbox("Escolha o CS", cs_opcoes, key="cs_evolucao_notas")
-    fig_cs = bar_month_recebido_pendente(
-        df[df["CS"] == cs_escolhido], "Autorização", f"Recebido vs A Receber por Mês — {cs_escolhido}"
-    )
+    fig_cs = line_month_by_category(df, "Autorização", "CS", "Valor Emitido por Mês, por CS (Autorização)", height=420)
     if fig_cs:
         render_chart(fig_cs, "mes_cs")
     else:
-        st.info("Sem notas com data de autorização para esse CS nos filtros atuais.")
+        st.info("Sem notas com data de autorização nos filtros atuais.")
 
     render_chart(
         bar_by_category_horizontal(pendente, "Cliente", "Valor", "Top 20 Clientes por Valor Pendente", top_n=20),
