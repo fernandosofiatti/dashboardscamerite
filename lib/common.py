@@ -52,7 +52,9 @@ _FONT = dict(family="Segoe UI, sans-serif", color=CAMERITE_INK)
 _CSS = """
 <style>
 /* ---- página ---- */
-.block-container { padding-top: 1.2rem; padding-bottom: 3rem; }
+/* stHeader é fixo e fica por cima do conteúdo (~60px) — sem esse respiro o topo
+   arredondado do banner fica escondido atrás dele. */
+.block-container { padding-top: 4.5rem; padding-bottom: 3rem; }
 
 /* ---- cabeçalho ---- */
 .fin-header {
