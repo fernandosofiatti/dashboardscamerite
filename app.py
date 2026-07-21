@@ -5,7 +5,26 @@ from lib.common import inject_css, page_header, read_csv_any
 
 st.set_page_config(page_title="Dashboards CS", page_icon="💰", layout="wide")
 inject_css()
-
+st.markdown(
+    """
+    <style>
+    /* Esconde o que o Streamlit Cloud injeta apontando pro fonte.
+       Cosmético apenas - o repo continua público no GitHub. */
+    #MainMenu { visibility: hidden; }
+    footer { visibility: hidden; }
+    [data-testid="stToolbar"] { display: none !important; }
+    [data-testid="stDecoration"] { display: none !important; }
+    [data-testid="stStatusWidget"] { display: none !important; }
+    [data-testid="stAppDeployButton"],
+    .stAppDeployButton { display: none !important; }
+    [class*="viewerBadge"] { display: none !important; }
+    .stApp a[href^="https://github.com"],
+    .stApp a[href^="https://share.streamlit.io"],
+    .stApp a[href^="https://streamlit.io"] { display: none !important; }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 FORMATS = [format_cobrancas, format_notas]
 
 page_header(
